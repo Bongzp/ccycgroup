@@ -6,11 +6,19 @@
 }
 
 .countdown-container{
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     position: relative;
     padding: 0 8%;
     background-image: url(../images/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 600px) {
+    .countdown-container{
+        height: 100%;
+    }
 }
 
 .logo{
@@ -35,6 +43,12 @@
     display: flex;
 }
 
+@media screen and (max-width: 600px) {
+    .launch-time{
+        flex-direction: column;
+    }
+}
+
 .launch-time div{
     flex-basis: 100px;
 }
@@ -47,5 +61,5 @@
 .social-links i{
     margin-top: 100px;
     margin-bottom: 50px;
-    color: hsl(224.21,61.96%,36.08%);
+    color: white;
 }
