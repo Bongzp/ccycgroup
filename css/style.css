@@ -1,0 +1,51 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.countdown-container{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    padding: 0 8%;
+    background-image: url(../images/background.png);
+}
+
+.logo{
+    width: 250px;
+    padding: 20px 0;
+    cursor: pointer;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #FFF;
+}
+
+.content h1{
+    font-size: 64px;
+    font-weight: 600;
+}
+
+.launch-time {
+    display: flex;
+}
+
+.launch-time div{
+    flex-basis: 100px;
+}
+
+.launch-time div p{
+    font-size: 60px;
+    margin-top: 20px;
+}
+
+.social-links i{
+    margin-top: 100px;
+    margin-bottom: 50px;
+    color: hsl(224.21,61.96%,36.08%);
+}
