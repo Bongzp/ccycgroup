@@ -1,25 +1,82 @@
-let countDownDate = new Date("Oct 19, 2023 00:00:00").getTime();
+/**
+ * add event on element
+ */
 
-let x = setInterval(function () {
-    let now = new Date().getTime();
-    let distance = countDownDate - now;
-
-    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById('days').innerHTML = days;
-    document.getElementById('hours').innerHTML = hours;
-    document.getElementById('minutes').innerHTML = minutes;
-    document.getElementById('seconds').innerHTML = seconds;
-
-    if (distance < 0) {
-        clearInterval(x);
-
-        document.getElementById('days').innerHTML = "00";
-        document.getElementById('hours').innerHTML = "00";
-        document.getElementById('minutes').innerHTML = "00";
-        document.getElementById('seconds').innerHTML = "00";
+const addEventOnElem = function (elem, type, callback) {
+    if (elem.length > 1) {
+      for (let i = 0; i < elem.length; i++) {
+        elem[i].addEventListener(type, callback);
+      }
+    } else {
+      elem.addEventListener(type, callback);
     }
-}, 1000)
+  }
+  
+  
+  
+  /**
+   * navbar toggle
+   */
+  
+  const navbar = document.querySelector("[data-navbar]");
+  const navToggler = document.querySelectorAll("[data-nav-toggler]");
+  const overlay = document.querySelector("[data-overlay]");
+  
+  const toggleNavbar = function () {
+    navbar.classList.toggle("active");
+    overlay.classList.toggle("active");
+  }
+  
+  addEventOnElem(navToggler, "click", toggleNavbar);
+  
+  
+  
+  /**
+   * close navbar when click on any navbar links
+   */
+  
+  const navLinks = document.querySelectorAll("[data-nav-link]");
+  
+  const closeNavbar = function () {
+    navbar.classList.remove("active");
+    overlay.classList.remove("active");
+  }
+  
+  addEventOnElem(navLinks, "click", closeNavbar);
+  
+  
+  
+  /**
+   * header active when scroll down
+   */
+  
+  const header = document.querySelector("[data-header]");
+  
+  const headerActive = function () {
+    window.scrollY > 100 ? header.classList.add("active")
+      : header.classList.remove("active");
+  }
+  
+  addEventOnElem(window, "scroll", headerActive);
+  
+  
+  
+  /**
+   * accordion toggle
+   */
+  
+  const accordionAction = document.querySelectorAll("[data-accordion-action]");
+  
+  const toggleAccordion = function () { this.classList.toggle("active"); }
+  
+  addEventOnElem(accordionAction, "click", toggleAccordion);
+  
+  /*
+   * CLEAR CONTACT FORM AFTER SUBMISSION
+   */
+  
+  window.onbeforeunload = () => {
+    for(const form of document.getElementsByTagName('form')) {
+      form.reset();
+    }
+  }
